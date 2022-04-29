@@ -4,18 +4,18 @@ A movie application that allows users to search for and save movies to a watchli
 
 ### Features
 
-Client-side search
-Fetches list of movies from The Movie Database (TMDB) API
-Utilizes localStorage to save data to browser
-Marks movies as watched or not yet watched
+- Client-side search   
+- Fetches list of movies from The Movie Database (TMDB) API   
+- Utilizes localStorage to save data to browser   
+- Marks movies as watched or not yet watched    
 
 ### Tech Stack
 
-HTML
-CSS
-Javascript
-React
-React Hooks
+- HTML   
+- CSS  
+- Javascript  
+- React  
+- React Hooks  
 
-Feel free to check it out using the link below!
+Feel free to check it out using the link below!  
 [https://flixel.netlify.app/](https://flixel.netlify.app/)
