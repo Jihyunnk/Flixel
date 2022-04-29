@@ -1,38 +1,252 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #eff2f1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav--container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 3rem;
+  padding: 10px;
+  background-color: #032541;
+  height: 80px;
+  font-size: 1.4em;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav--container a {
+  text-decoration: none;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav--container .link:hover {
+  transform: scale(1.03);
+  transition-duration: 0.2s;
+}
+
+.logo--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-left: 1.2rem;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.5em;
+  letter-spacing: 0.2em;
+}
+
+.logo {
+  width: 40px;
+  height: 100%;
+}
+
+.watchlist {
+  margin-left: auto;
+}
+
+.search-icon {
+  border: none;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+.search {
+  margin-left: -5px;
+  margin-right: 2.5rem;
+  text-indent: 0.2em;
+  border: none;
+  outline: none;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 7px 10px;
+}
+
+.results--container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.results--text {
+  font-size: 20px;
+  padding: 25px 20px 15px 20px;
+}
+
+.no--results,
+.notfound--container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  font-size: 2.5rem;
+}
+
+.movie--card {
+  margin: 1rem;
+  background: #fff;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  position: relative;
+}
+
+.movie--card:hover,
+.list--card:hover {
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.15);
+  transform: translate3D(0, -2px, 0);
+}
+
+.movie--card:hover .addBtn {
+  display: inline-block;
+}
+
+.movie--title {
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  background-color: #01577e;
+  margin: 0 0 2rem;
+  font-size: 1.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.movie--img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+.movie--description {
+  padding: 0 2.5rem 2.5rem 2.5rem;
+  margin: 0;
+}
+
+.addBtn {
+  background-color: #01577e;
+  border-radius: 3px;
+  border: none;
+  display: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 9px 23px;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+
+.addBtn:hover {
+  background-color: #5ebaf3;
+}
+
+@media screen and (min-width: 600px) {
+  .movie--card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(50% - 2rem);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 900px) {
+  .movie--card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(33% - 2rem);
   }
+}
+
+.watchlist--container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list--card {
+  margin: 1.7rem;
+  transition: all 0.2s linear;
+  overflow: hidden;
+  position: relative;
+}
+
+.list--img {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.button--wrapper {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 6px;
+  bottom: 20px;
+  display: none;
+  left: 50%;
+  /* opacity: 0; */
+  padding: 8px 10px 3px 10px;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.ctrl--icon {
+  font-size: 1.7rem;
+}
+
+.ctrl--btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  margin: 0;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.ctrl--btn:hover {
+  color: #68db92;
+}
+
+.list--card:hover .button--wrapper {
+  display: inline;
 }
