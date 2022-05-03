@@ -21,7 +21,7 @@ function RatingForm() {
           onChange={(e) => setRating(e.target.value)}
         ></input>
       </div>
-      <button className="form--button">Add Rating</button>
+      <button className="form--button">Save Rating</button>
     </form>
   );
 }
