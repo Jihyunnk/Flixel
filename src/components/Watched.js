@@ -4,6 +4,7 @@ import defaultPoster from '../defaultPoster.jpeg';
 import { BsCameraVideoOff } from 'react-icons/bs';
 import { FaTimes, FaRegStar } from 'react-icons/fa';
 import Modal from '../context/Modal';
+import RatingForm from './RatingForm';
 
 function Watched() {
   const { watched, markAsUnwatched, removeFromWatched } =
@@ -47,7 +48,11 @@ function Watched() {
   return (
     <div>
       <div className="watchlist--container">{watchedDisplay}</div>;
-      {showModal && <Modal onClose={() => setShowModal(false)}></Modal>}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <RatingForm />
+        </Modal>
+      )}
     </div>
   );
 }
