@@ -4,7 +4,7 @@ const Modal = ({ onClose, children }) => {
   return ReactDOM.createPortal(
     <div>
       <div className="modal--container" onClick={() => onClose()}>
-        <div className="modal">
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
           <div className="modal--header">
             <h2> Add Rating </h2>
           </div>
