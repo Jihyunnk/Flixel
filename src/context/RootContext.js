@@ -76,6 +76,20 @@ function RootContextProvider({ children }) {
     });
   };
 
+  const saveRating = (movie, rating) => {
+    console.log('watched before: ', watched);
+    let newWatched = watched.map((item) => {
+      if (item.id === movie.id) {
+        return { ...item, rating: rating };
+      } else {
+        return item;
+      }
+    });
+    localStorage.setItem('watched', JSON.stringify(newWatched));
+    setWatched(newWatched);
+    console.log('watched after: ', watched);
+  };
+
   return (
     <RootContext.Provider
       value={{
@@ -95,6 +109,7 @@ function RootContextProvider({ children }) {
         markAsWatched,
         markAsUnwatched,
         removeFromWatched,
+        saveRating,
       }}
     >
       {children}

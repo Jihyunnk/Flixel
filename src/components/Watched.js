@@ -12,13 +12,6 @@ function Watched() {
 
   const [showModal, setShowModal] = useState(false);
 
-  console.log(showModal);
-
-  // function addRating() {
-  // console.log(JSON.stringify(movie));
-  // console.log(showModal);
-  // }
-
   const watchedDisplay = watched.map((movie) => {
     const posterIcon = movie['poster_path']
       ? `https://image.tmdb.org/t/p/w300/${movie['poster_path']}`
@@ -40,6 +33,11 @@ function Watched() {
           <button className="ctrl--btn" onClick={() => setShowModal(true)}>
             <FaRegStar className="ctrl--icon" />
           </button>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <RatingForm selected={movie} />
+            </Modal>
+          )}
         </div>
       </div>
     );
@@ -48,11 +46,11 @@ function Watched() {
   return (
     <div>
       <div className="watchlist--container">{watchedDisplay}</div>;
-      {showModal && (
+      {/* {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <RatingForm />
+          <RatingForm selected={selected} />
         </Modal>
-      )}
+      )} */}
     </div>
   );
 }

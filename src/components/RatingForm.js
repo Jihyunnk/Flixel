@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { RootContext } from '../context/RootContext';
 
-function RatingForm() {
+function RatingForm({ selected }) {
+  const { saveRating } = useContext(RootContext);
+
   const [rating, setRating] = useState(5);
-
-  console.log(rating);
 
   function handleSubmit(e) {
     e.preventDefault();
+    saveRating(selected, rating);
   }
 
   return (
