@@ -77,7 +77,6 @@ function RootContextProvider({ children }) {
   };
 
   const saveRating = (movie, rating) => {
-    console.log('watched before: ', watched);
     let newWatched = watched.map((item) => {
       if (item.id === movie.id) {
         return { ...item, rating: rating };
@@ -87,7 +86,6 @@ function RootContextProvider({ children }) {
     });
     localStorage.setItem('watched', JSON.stringify(newWatched));
     setWatched(newWatched);
-    console.log('watched after: ', watched);
   };
 
   return (

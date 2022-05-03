@@ -46,11 +46,6 @@ function Watched() {
   return (
     <div>
       <div className="watchlist--container">{watchedDisplay}</div>;
-      {/* {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <RatingForm selected={selected} />
-        </Modal>
-      )} */}
     </div>
   );
 }
