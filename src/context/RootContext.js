@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const RootContext = createContext();
 
@@ -17,6 +17,11 @@ function RootContextProvider({ children }) {
       ? JSON.parse(localStorage.getItem('watched'))
       : []
   );
+
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }, [watchlist, watched]);
 
   const searchMovie = async (e) => {
     e.preventDefault();
@@ -37,7 +42,6 @@ function RootContextProvider({ children }) {
   const addToWatchlist = (movie) => {
     setWatchlist((prevList) => {
       const newList = [...prevList, movie];
-      localStorage.setItem('watchlist', JSON.stringify(newList));
       return newList;
     });
   };
@@ -45,7 +49,6 @@ function RootContextProvider({ children }) {
   const removeFromWatchlist = (movie) => {
     setWatchlist((prevList) => {
       const newList = prevList.filter((item) => item.id !== movie.id);
-      localStorage.setItem('watchlist', JSON.stringify(newList));
       return newList;
     });
   };
@@ -54,7 +57,6 @@ function RootContextProvider({ children }) {
     removeFromWatchlist(movie);
     setWatched((prevWatched) => {
       const newWatched = [...prevWatched, movie];
-      localStorage.setItem('watched', JSON.stringify(newWatched));
       return newWatched;
     });
   };
@@ -62,7 +64,6 @@ function RootContextProvider({ children }) {
   const markAsUnwatched = (movie) => {
     setWatched((prevWatched) => {
       const newWatched = prevWatched.filter((item) => item.id !== movie.id);
-      localStorage.setItem('watched', JSON.stringify(newWatched));
       return newWatched;
     });
     addToWatchlist(movie);
@@ -71,7 +72,6 @@ function RootContextProvider({ children }) {
   const removeFromWatched = (movie) => {
     setWatched((prevWatched) => {
       const newWatched = prevWatched.filter((item) => item.id !== movie.id);
-      localStorage.setItem('watched', JSON.stringify(newWatched));
       return newWatched;
     });
   };
@@ -84,7 +84,6 @@ function RootContextProvider({ children }) {
         return item;
       }
     });
-    localStorage.setItem('watched', JSON.stringify(newWatched));
     setWatched(newWatched);
   };
 
