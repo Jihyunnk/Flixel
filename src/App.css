@@ -219,8 +219,7 @@ select {
 .button--wrapper {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 6px;
-  /* bottom: 20px; */
-  bottom: 60px;
+  bottom: 20px;
   display: none;
   left: 50%;
   /* opacity: 0; */
@@ -326,4 +325,8 @@ select {
 
 .list--card.rating:hover {
   box-shadow: none;
+}
+
+.list--card.rating .button--wrapper {
+  bottom: 55px;
 }
