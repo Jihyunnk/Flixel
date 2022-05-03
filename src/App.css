@@ -223,7 +223,7 @@ select {
   display: none;
   left: 50%;
   /* opacity: 0; */
-  padding: 8px 10px 3px 10px;
+  padding: 8px 3px 3px 3px;
   position: absolute;
   transform: translateX(-50%);
   transition: all 0.3s ease;
@@ -249,4 +249,25 @@ select {
 
 .list--card:hover .button--wrapper {
   display: inline;
+}
+
+.modal--container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 30vw;
+  height: auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
 }
