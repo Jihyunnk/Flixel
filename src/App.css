@@ -219,7 +219,8 @@ select {
 .button--wrapper {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 6px;
-  bottom: 20px;
+  /* bottom: 20px; */
+  bottom: 60px;
   display: none;
   left: 50%;
   /* opacity: 0; */
@@ -319,6 +320,10 @@ select {
 
 .star-rating {
   color: rgb(255, 221, 0);
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-top: 5px;
+}
+
+.list--card.rating:hover {
+  box-shadow: none;
 }

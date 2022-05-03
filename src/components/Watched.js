@@ -24,7 +24,7 @@ function Watched() {
       : '';
 
     return (
-      <div key={movie.id} className="list--card">
+      <div key={movie.id} className="list--card rating">
         <div>
           <img src={posterIcon} alt="movie poster" className="list--img" />
           <div className="button--wrapper">
