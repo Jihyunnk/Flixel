@@ -35,7 +35,7 @@ function Watched() {
           </button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <RatingForm selected={movie} />
+              <RatingForm selected={movie} setShowModal={setShowModal} />
             </Modal>
           )}
         </div>

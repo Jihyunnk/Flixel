@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { RootContext } from '../context/RootContext';
 
-function RatingForm({ selected }) {
+function RatingForm({ selected, setShowModal }) {
   const { saveRating } = useContext(RootContext);
 
   const [rating, setRating] = useState(5);
@@ -9,6 +9,7 @@ function RatingForm({ selected }) {
   function handleSubmit(e) {
     e.preventDefault();
     saveRating(selected, rating);
+    setShowModal(false);
   }
 
   return (
