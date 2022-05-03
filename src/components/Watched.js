@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { RootContext } from '../context/RootContext';
 import defaultPoster from '../defaultPoster.jpeg';
 import { BsCameraVideoOff } from 'react-icons/bs';
-import { FaTimes, FaRegStar } from 'react-icons/fa';
+import { FaTimes, FaRegStar, FaStar } from 'react-icons/fa';
 import Modal from '../context/Modal';
 import RatingForm from './RatingForm';
 
@@ -17,28 +17,40 @@ function Watched() {
       ? `https://image.tmdb.org/t/p/w300/${movie['poster_path']}`
       : defaultPoster;
 
+    const ratings = movie.rating
+      ? [...Array(Number(movie.rating))].map((e, i) => (
+          <FaStar key={i} className="star-rating" />
+        ))
+      : '';
+
     return (
       <div key={movie.id} className="list--card">
-        <img src={posterIcon} alt="movie poster" className="list--img" />
-        <div className="button--wrapper">
-          <button className="ctrl--btn" onClick={() => markAsUnwatched(movie)}>
-            <BsCameraVideoOff className="ctrl--icon" />
-          </button>
-          <button
-            className="ctrl--btn"
-            onClick={() => removeFromWatched(movie)}
-          >
-            <FaTimes className="ctrl--icon" />
-          </button>
-          <button className="ctrl--btn" onClick={() => setShowModal(true)}>
-            <FaRegStar className="ctrl--icon" />
-          </button>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <RatingForm selected={movie} setShowModal={setShowModal} />
-            </Modal>
-          )}
+        <div>
+          <img src={posterIcon} alt="movie poster" className="list--img" />
+          <div className="button--wrapper">
+            <button
+              className="ctrl--btn"
+              onClick={() => markAsUnwatched(movie)}
+            >
+              <BsCameraVideoOff className="ctrl--icon" />
+            </button>
+            <button
+              className="ctrl--btn"
+              onClick={() => removeFromWatched(movie)}
+            >
+              <FaTimes className="ctrl--icon" />
+            </button>
+            <button className="ctrl--btn" onClick={() => setShowModal(true)}>
+              <FaRegStar className="ctrl--icon" />
+            </button>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <RatingForm selected={movie} setShowModal={setShowModal} />
+              </Modal>
+            )}
+          </div>
         </div>
+        {movie.rating && <div className="rating--container">{ratings}</div>}
       </div>
     );
   });

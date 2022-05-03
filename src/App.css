@@ -311,3 +311,14 @@ select {
   background-color: #032541c4;
   transform: scale(1.03);
 }
+
+.rating--container {
+  display: flex;
+  justify-content: center;
+}
+
+.star-rating {
+  color: rgb(255, 221, 0);
+  font-size: 2.5rem;
+  margin-top: 5px;
+}
