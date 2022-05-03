@@ -17,7 +17,6 @@ function SearchResults() {
         `https://api.themoviedb.org/3/movie/popular?api_key=6c95b5c8fd99ea472bb06ae3c2004c44&language=en-US&page=1`
       );
       const data = await res.json();
-      console.log('popular movies data: ', data.results);
       setPopular(data.results);
     };
     popularList();

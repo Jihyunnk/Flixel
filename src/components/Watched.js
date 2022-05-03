@@ -11,6 +11,12 @@ function Watched() {
     useContext(RootContext);
 
   const [showModal, setShowModal] = useState(false);
+  const [selected, setSelected] = useState({});
+
+  function handleClick(movie) {
+    setSelected(movie);
+    setShowModal(true);
+  }
 
   const watchedDisplay = watched.map((movie) => {
     const posterIcon = movie['poster_path']
@@ -40,12 +46,12 @@ function Watched() {
             >
               <FaTimes className="ctrl--icon" />
             </button>
-            <button className="ctrl--btn" onClick={() => setShowModal(true)}>
+            <button className="ctrl--btn" onClick={() => handleClick(movie)}>
               <FaRegStar className="ctrl--icon" />
             </button>
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>
-                <RatingForm selected={movie} setShowModal={setShowModal} />
+                <RatingForm selected={selected} setShowModal={setShowModal} />
               </Modal>
             )}
           </div>
